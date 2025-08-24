@@ -1,0 +1,32 @@
+#!/usr/bin/env sh
+
+NEW_SYSTEM_ROOT=/target
+
+_self="$(realpath $0)"
+_path="$(dirname "${_self}")"
+_file="$(basename "${_self}")"
+_name="${_file%.*}"
+
+_nsroot="$(realpath -s "${NEW_SYSTEM_ROOT}")"
+
+if [ "${_self#${_nsroot}}" != "${_self}" ]; then
+  echo "I'm in the wrong chrooted env. Popping into '${_nsroot}'" >&2
+  chroot "${_nsroot}" "${_self#${_nsroot}}"
+else
+  echo "I'm in the right chrooted env! Whee! "':-)' >&2
+  echo "Commencing setup! >&2"
+  for s in /boot/efi/setup.finalize/*.sh; do
+    [ -n "${s}" ] || continue
+    [ -f "${s}" ] || continue
+    [ -x "${s}" ] || continue
+    echo "Kicking off script '$(basename "${s}")'." >&2
+    "${s}"
+  done
+  for s in /boot/efi/setup.firstboot/*.sh; do
+    [ -n "${s}" ] || continue
+    [ -f "${s}" ] || continue
+    [ -x "${s}" ] || continue
+    echo "Creating one-off unit file for '$(basename "${s}")'." >&2
+    echo "NOT IMPLEMENTED YET" >&2
+  done
+fi
