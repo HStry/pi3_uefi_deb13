@@ -1,0 +1,23 @@
+X-Repolib-Name: Internet Systems Consortium - Stork (cloudsmith.io)
+Types:          deb deb-src
+URIs:           https://dl.cloudsmith.io/public/isc/stork/deb/debian
+Suites:         bookworm
+Components:     main
+Signed-By:      /etc/apt/keyrings/isc-stork-archive-keyring.gpg
+Enabled:        yes
+
+X-Repolib-Name: Internet Systems Consortium - kea 3.0 LTS (cloudsmith.io)
+Types:          deb deb-src
+URIs:           https://dl.cloudsmith.io/public/isc/kea-3-0/deb/debian
+Suites:         bookworm
+Components:     main
+Signed-By:      /etc/apt/keyrings/isc-kea-3-0-archive-keyring.gpg
+Enabled:        yes
+
+X-Repolib-Name: Internet Systems Consortium - bind (packages.sury.org)
+Types:          deb deb-src
+URIs:           https://packages.sury.org/bind
+Suites:         bookworm
+Components:     main
+Signed-By:      /etc/apt/keyrings/bind-debian-keyring.gpg
+Enabled:        yes
