@@ -21,8 +21,9 @@ _deploy_files() (
   target="$(realpath "${target}")"
 
   for f in "${source}/"*; do
-    [ -n "${f}" ] || continue
-    [ -f "${f}" ] || continue
+    [ -n "${f}" ] || continue  # skip empty values
+    [ -f "${f}" ] || continue  # skip non-files
+    [ -s "${f}" ] || continue  # skip empty files
     fn="$(basename "${f}")"
     echo "${target}/${fn}" >&2
     cp "${f}" "${target}"
