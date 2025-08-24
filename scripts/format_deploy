@@ -125,6 +125,7 @@ vg_name() (
 
 help=0
 force=0
+wipe_disk=0
 devices=
 parts=
 vg_name=
@@ -141,6 +142,7 @@ for arg in "$@"; do
   case "$(echo "${arg#--}" | sed -e 's/-/_/g')" in
     'help')      help=1;;
     'force')     force=1;;
+    'wipe-disk') wipe_disk=1;;
     'device')    active_arg='device';;
     'partition') active_arg='partition';;
     'vg_name')   active_arg='vg_name';;
